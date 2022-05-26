@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+
+import Header from "./components/common/Header";
+import Home from "./pages/Home";
+import Liked from "./pages/Liked";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import { ToastContainer } from "react-toastify";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 function App() {
+  const [activeDarkMode, setActiveDarkMode] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header setActive={setActiveDarkMode} active={activeDarkMode} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/liked"
+          element={
+            <PrivateRoute>
+              <Liked />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+      <ToastContainer autoClose={2000} />
     </div>
   );
 }
