@@ -1,0 +1,19 @@
+{
+  "name": "pitch-tank-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r esm --experimental-modules src/app.js",
+    "nodemon": "nodemon -r esm --experimental-modules src/app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "esm": "^3.2.25",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4",
+    "node-fetch": "2"
+  }
+}
